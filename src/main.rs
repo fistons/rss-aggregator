@@ -1,3 +1,8 @@
+#[macro_use]
+extern crate diesel;
+extern crate dotenv;
+
+use std::env;
 use std::error::Error;
 use std::fs::File;
 use std::io::BufReader;
@@ -8,7 +13,8 @@ use actix_files as fs;
 use actix_web::web::Data;
 use actix_web::{App, HttpServer};
 use clokwerk::{AsyncScheduler, TimeUnits};
-use sea_orm::{ConnectOptions, Database};
+use diesel::pg::PgConnection;
+use diesel::prelude::*;
 use simplelog::{ColorChoice, CombinedLogger, Config, LevelFilter, TermLogger, TerminalMode};
 
 use crate::model::configuration::ApplicationConfiguration;
@@ -20,10 +26,16 @@ use crate::services::GlobalService;
 mod errors;
 mod model;
 mod routes;
+mod schema;
 mod services;
 
 type RedisConnection = redis::Connection;
 
+pub fn establish_connection() -> PgConnection {
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+
+    PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
+}
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // Init dotenv

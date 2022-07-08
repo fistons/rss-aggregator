@@ -1,10 +1,4 @@
 use chrono::{DateTime, Utc};
-use sea_orm::sea_query::{Alias, Expr};
-use sea_orm::DatabaseConnection;
-use sea_orm::{entity::*, query::*, DbErr};
-
-use entity::channels::Entity as Channel;
-use entity::{channel_users, channels, users_items};
 
 use crate::errors::ApiError;
 use crate::model::{HttpChannel, HttpNewChannel, HttpUserChannel, PagedResult};

@@ -9,9 +9,6 @@ use jwt::{SignWithKey, VerifyWithKey};
 use serde::{Deserialize, Serialize};
 use sha2::Sha256;
 
-use entity::sea_orm_active_enums::UserRole;
-use entity::users;
-
 use crate::errors::ApiError;
 use crate::services::users::UserService;
 

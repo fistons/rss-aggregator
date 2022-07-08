@@ -1,14 +1,4 @@
 use feed_rs::model::Entry;
-use sea_orm::sea_query::Expr;
-use sea_orm::DatabaseConnection;
-use sea_orm::{entity::*, query::*, DeriveColumn, EnumIter};
-
-use entity::channel_users;
-use entity::channel_users::Entity as ChannelUsers;
-use entity::items;
-use entity::items::Entity as Item;
-use entity::prelude::UsersItems;
-use entity::users_items;
 
 use crate::errors::ApiError;
 use crate::model::{item_from_rss_entry, HttpUserItem, PagedResult};

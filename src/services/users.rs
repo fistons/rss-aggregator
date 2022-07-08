@@ -1,10 +1,3 @@
-use sea_orm::DatabaseConnection;
-use sea_orm::{entity::*, query::*};
-
-use entity::sea_orm_active_enums::UserRole;
-use entity::users;
-use entity::users::Entity as User;
-
 use crate::errors::ApiError;
 use crate::model::{HttpUser, PagedResult};
 

@@ -2,11 +2,7 @@ use std::fmt::Debug;
 
 use chrono::{DateTime, Utc};
 use feed_rs::model::Entry;
-use sea_orm::{FromQueryResult, NotSet, Set};
 use serde::{Deserialize, Serialize, Serializer};
-
-use entity::items;
-use entity::sea_orm_active_enums::UserRole;
 
 pub mod configuration;
 pub mod opml;

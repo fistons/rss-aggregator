@@ -1,8 +1,6 @@
 use actix_web::{get, post, web, HttpResponse};
 use serde_json::json;
 
-use entity::sea_orm_active_enums::UserRole;
-
 use crate::errors::ApiError;
 use crate::model::configuration::ApplicationConfiguration;
 use crate::model::{HttpNewUser, PageParameters, PagedResult};
